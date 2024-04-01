@@ -9,11 +9,12 @@ ExitProcess proto, dwExitCode:dword
 
 .data
 
+
 .code
-
 main proc
+main endp
 
-	INVOKE ExitProcess, 0
+CreateRandomString PROC
+CreateRandomString ENDP
 
-main ENDP
-END main
+end main
