@@ -1,35 +1,46 @@
-;Tanner Bebb Proj 5
-;Random string generator
+;.386
+;.model flat,stdcall
+;.stack 4096
+;ExitProcess PROTO, dwExitCode:DWORD
+INCLUDE Irvine32.inc
 
-.386
-.model flat,stdcall
-.stack 4096
-include irvine32.inc
-ExitProcess proto, dwExitCode:dword
-
-str_len = 10																;This is just set to the value that I want each length of the string to be.
+str_len = 10
 
 .data
-	str_index BYTE str_len DUP(0),  0										;This is going to duplicate the string a given number of times.
+str_index BYTE str_len DUP(0),  0               ;
+i SDWORD ?                                      ;This is my indexed variable that I will be using in my for loop.
 
 .code
 main proc
-
-	call Clrscr                                                             ;This is going to clear the line.
-    mov esi, OFFSET str_index                                               ;This is moving the address location of str_index to the esi register.
-    call Randomize                                                          ;Unsure as to what this does right now. I am looking into it.
-    mov ecx, 20                                                             ;This will move the value of 20 to the ecx register. This is the number of strings I want this to generate.
-
+    call Clrscr                                 ;
+    mov esi, OFFSET str_index                   ;
+    call Randomize                              ;
+    mov ecx, 20                                 ;
+    
 L1:
-    call Random32                                                           ;Ran out of time for this session. I will finish the documentation later
-    call CreateRandomString                                                 ;
-    loop L1                                                                 ;
+    call Random32                               ;
+    call CreateRandomString                     ;
+    cmp ecx, 20                                 ;
+    loop L1                                     ;
 
     invoke ExitProcess,0
-
 main endp
 
 CreateRandomString PROC
+; Receives: Length of the string (L) in EAX, the pointer
+; to a byte array in ESI where the random string will be saved
+; Returns: Pointer to a byte array in ESI held the random string
+;-----------------------------------------------------
+mov ecx, LENGTHOF str_index                     ;
+L2:
+    mov eax, 26                                 ;
+    call RandomRange                            ;
+    add eax, 65                                 ;
+    mov[esi], eax                               ;
+    call WriteChar                              ;
+    loop L2                                     ;
+call Crlf                                       ;
+ret                                             ;
 CreateRandomString ENDP
 
 end main
