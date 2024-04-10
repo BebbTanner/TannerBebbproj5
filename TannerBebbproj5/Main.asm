@@ -31,16 +31,16 @@ CreateRandomString PROC
 ; to a byte array in ESI where the random string will be saved
 ; Returns: Pointer to a byte array in ESI held the random string
 ;-----------------------------------------------------
-mov ecx, LENGTHOF str_index                     ;
+mov ecx, LENGTHOF str_index                     ;This is moving the number of elements of str_index to the ecx register.
 L2:
-    mov eax, 26                                 ;
-    call RandomRange                            ;
-    add eax, 65                                 ;
-    mov[esi], eax                               ;
-    call WriteChar                              ;
-    loop L2                                     ;
-call Crlf                                       ;
-ret                                             ;
+    mov eax, 26                                 ;Moving the value 26 to the eax register. It is 26 because the is the total number of letters in the alphabet.
+    call RandomRange                            ;This will generate a random unassigned random integer.
+    add eax, 65                                 ;This is going to add 65 to number generated in the eax register. The reason it does this is to make all of the letters their capital counterparts.
+    mov[esi], eax                               ;This is moving whatever is in the eax register to the esi register. The esi register has been dereferanced.
+    call WriteChar                              ;Write the current charaters to the screen.
+    loop L2                                     ;loop back to L2, and repeat the process until the whole string has been generated.
+call Crlf                                       ;Add a new line.
+ret                                             ;Return to the main proc after the whole process is finished.
 CreateRandomString ENDP
 
 end main
