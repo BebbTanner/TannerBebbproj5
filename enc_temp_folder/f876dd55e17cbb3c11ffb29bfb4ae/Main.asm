@@ -8,7 +8,7 @@
 ;ExitProcess PROTO, dwExitCode:DWORD
 INCLUDE Irvine32.inc
 
-str_len = 9                                     ;Changed this to 9, for some reason setting it to 10 made the final string 11 characters instead of 10, This makes them the length of 10.
+str_len = 9
 
 .data
 str_index BYTE str_len DUP(0),  0               ;String index and string length. Unsure as to what this is right now.
