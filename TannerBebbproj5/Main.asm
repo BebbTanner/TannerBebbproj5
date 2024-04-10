@@ -11,21 +11,21 @@ INCLUDE Irvine32.inc
 str_len = 10
 
 .data
-str_index BYTE str_len DUP(0),  0               ;
+str_index BYTE str_len DUP(0),  0               ;String index and string length. Unsure as to what this is right now.
 i SDWORD ?                                      ;This is my indexed variable that I will be using in my for loop.
 
 .code
 main proc
-    call Clrscr                                 ;
-    mov esi, OFFSET str_index                   ;
-    call Randomize                              ;
-    mov ecx, 20                                 ;
+    call Clrscr                                 ;This is going to the next line.
+    mov esi, OFFSET str_index                   ;This is pointing to the str_index and storing it in the esi register.
+    call Randomize                              ;This is setting the seed to generate something random, not sure as to why yet.
+    mov ecx, 20                                 ;This is moveing the value of 20 to the ecx register.
     
 L1:
-    call Random32                               ;
-    call CreateRandomString                     ;
-    cmp ecx, 20                                 ;
-    loop L1                                     ;
+    call Random32                               ;This generates a random 32 bit int, from 0 - FFFFFFFFh
+    call CreateRandomString                     ;This is calling the createrandomstring function that is defined below.
+    cmp ecx, 20                                 ;This is comparing the value of 20 to what is stored in the ecx register.
+    loop L1                                     ;This will jump back to the L1 tag and repeat the loop.
 
     invoke ExitProcess,0
 main endp
