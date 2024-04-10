@@ -1,3 +1,7 @@
+;This is currently printing out the strings, but there is an infinite loop.
+;I believe the problem lies withing the L1 loop. I think that there is no limit to get it to stop.
+;I am currently working on a fix for it.
+
 ;.386
 ;.model flat,stdcall
 ;.stack 4096
