@@ -33,3 +33,29 @@ CreateRandomString PROC
 CreateRandomString ENDP
 
 end main
+
+
+;This is a for loop example. I am keeping this here to try and set it up correctly.
+
+;.data
+;	i SDWORD ?	
+;
+;.code
+;main PROC
+;	mov i, 1
+;again:
+;	cmp i, 20
+;	jg done
+;	mov eax, i
+;	call WriteInt
+;	mov al, ' '
+;	call WriteChar
+;	inc i
+;	jmp again
+;done:
+	
+;	call Crlf
+;	call WaitMsg
+;	exit
+;main ENDP
+;END	main
