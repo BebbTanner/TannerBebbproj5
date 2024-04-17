@@ -20,36 +20,32 @@ main PROC
 L1:                                                     ; generates a single string
     mov eax,STR_SIZE                                    ; loop counter
     mov esi,OFFSET aString                              ; string index
-
     call CreateRandomString                             ; Calls the random string function
     mov edx,OFFSET aString                              ; display the string
-    call Crlf
-;    cmp eax, 20
-;    jb L1
-    jg done
+;   cmp eax, 20
+;   jb L1
+;   jg done
 
 done:
-
-    exit
+	Call Crlf
+	Call WaitMsg
+	exit
 
 main ENDP
 
-;-------------------------------------------
-
 CreateRandomString PROC
 
-mov ecx, LENGTHOF str_index
-    L2:
-        mov eax, 26
-        call RandomRange
-        add eax, 65
-        mov[esi], eax
-        call WriteChar
-        loop L2
+    mov ecx, LENGTHOF str_index
+L2:
+    mov eax, 26
+    call RandomRange
+    add eax, 65
+    mov[esi], eax
+    call WriteChar
+    loop L2
     call Crlf
     ret
 
 CreateRandomString ENDP
-
 
 END main
