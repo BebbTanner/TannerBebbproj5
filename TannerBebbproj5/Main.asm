@@ -1,3 +1,7 @@
+;Tanner Bebb Project 5 assembly language
+;So far this prints out 1 string of 10 random characters. I need the loop to work correctly.
+;At first I was pretty sure that it was an issue in the L1 tag. But now I am almost wondering if it is an issue under the L2 tag.
+
 INCLUDE Irvine32.inc
 
 STR_COUNT = 20
@@ -17,13 +21,12 @@ L1:                                                     ; generates a single str
     mov eax,STR_SIZE                                    ; loop counter
     mov esi,OFFSET aString                              ; string index
 
-    call CreateRandomString
+    call CreateRandomString                             ; Calls the random string function
     mov edx,OFFSET aString                              ; display the string
     call Crlf
-    cmp eax, 20
-    jb L1
+;    cmp eax, 20
+;    jb L1
     jg done
-;    loop L1
 
 done:
 
