@@ -1,12 +1,13 @@
 ;Setting up a test to print out a string 20 times instead of counting from 1 to 20.
 ;Currently, it is printing out the string 20 times, but it is printing it backwords and idk why.
+;In the notes it also says to use CALL READCHAR and CALL WRITESTRING
 
 INCLUDE Irvine32.inc
 
 str_len = 9
 
 .data
-
+;	move dx, OFFSET prompt						;This was in the notes for this assignment
 	str_index BYTE str_len DUP(0), 0
 	i SDWORD ?
 
